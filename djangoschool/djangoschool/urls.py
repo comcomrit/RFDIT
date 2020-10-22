@@ -25,6 +25,7 @@ from school import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'supplies', views.Supplies_fictViewSet)
 
 urlpatterns = [
 	# localhost:8000/admin

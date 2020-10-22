@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect #ดึงมาจาก template
 from django.http import HttpResponse #เขียนบนกระดาน
-from school.models import ExamScore, AllStudent, Profile, DocumentUpload
+from school.models import ExamScore, AllStudent, Profile, DocumentUpload ,Supplies_fict
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets, permissions
-from school.serializers import UserSerializer, GroupSerializer
+from school.serializers import UserSerializer , GroupSerializer , Supplies_fictSerializer
 
 from rest_framework.response import Response
 
@@ -150,4 +150,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class Supplies_fictViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = Supplies_fict.objects.all()
+    serializer_class = Supplies_fictSerializer
     permission_classes = [permissions.IsAuthenticated]
